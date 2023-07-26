@@ -1,0 +1,9 @@
+.app-title {
+    width: min(80vw, 500px);
+    margin: auto;
+    text-align: center;
+}
+
+.app-title h1 {
+    font-weight: lighter;
+}
