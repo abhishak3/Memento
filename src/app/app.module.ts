@@ -16,9 +16,11 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { AddTaskComponent } from './add-task/add-task.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent],
+  declarations: [AppComponent, TaskListComponent, AddTaskComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +33,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

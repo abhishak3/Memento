@@ -1,0 +1,11 @@
+#add-task {
+    margin: 10px 0px;
+}
+
+#add-task-button {
+    box-shadow: none;
+}
+
+#task-title, #task-description {
+    width: 100%;
+}
