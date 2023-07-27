@@ -22,6 +22,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent, TaskListComponent, AddTaskComponent],
@@ -41,6 +44,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatGridListModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatMenuModule,
     StoreModule.forRoot({ task: taskReducer }),
     EffectsModule.forRoot([TaskEffects]),
   ],

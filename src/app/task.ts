@@ -2,7 +2,7 @@ export type Priority = 'low' | 'medium' | 'high';
 export type Status = 'todo' | 'in-progress' | 'completed';
 
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
   dueDate: Date;

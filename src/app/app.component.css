@@ -1,7 +1,8 @@
-.app-title {
-    text-align: center;
+.example-spacer {
+    flex: 1 1 auto;
 }
 
-.app-title h1 {
+#app-title-text {
+    font-size: 30px;
     font-weight: lighter;
 }

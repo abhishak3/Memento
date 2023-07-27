@@ -1,5 +1,32 @@
 <div class="app-title">
-  <h1>Memento</h1>
-  <mat-divider></mat-divider>
+  <p>
+    <mat-toolbar color="primary">
+      <span id="app-title-text">Memento</span>
+      <span class="example-spacer"></span>
+      <button
+        mat-icon-button
+        matTooltip="Export as CSV"
+        class="example-icon favorite-icon"
+      >
+        <mat-icon>get_app</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        matTooltip="Sort"
+        [matMenuTriggerFor]="menu"
+        class="example-icon favorite-icon"
+      >
+        <mat-icon>sort</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+  <!-- <h1>Memento</h1> -->
+  <!-- <mat-divider></mat-divider> -->
 </div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Due Date</button>
+  <button mat-menu-item>Priority</button>
+  <button mat-menu-item>Status</button>
+</mat-menu>
+
 <app-task-list></app-task-list>

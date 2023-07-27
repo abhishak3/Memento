@@ -11,7 +11,9 @@ import { loadTasks } from '../store/task.actions';
 })
 export class TaskListComponent implements OnInit {
   allTasks$ = this.store.pipe(select(selectAllTasks));
+
   constructor(private store: Store<AppState>) {}
+
   ngOnInit(): void {
     this.store.dispatch(loadTasks());
   }

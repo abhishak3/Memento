@@ -5,7 +5,7 @@ import { Task } from '../task';
 export const addTask = createAction('[Task Page] Add Task', props<Task>());
 export const removeTask = createAction(
   '[Task Page] Remove Task',
-  props<{ id: number }>()
+  props<{ id: string }>()
 );
 export const loadTasks = createAction('[Task Page] Load Tasks');
 export const loadTasksSuccess = createAction(

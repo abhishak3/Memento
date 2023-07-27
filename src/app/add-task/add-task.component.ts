@@ -29,7 +29,7 @@ export class AddTaskComponent {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
       const new_task: Task = {
-        id: 1,
+        id: Date.now().toString(),
         title: formData.title as string,
         description: formData.description as string,
         dueDate: new Date(formData.dueDate as string),
