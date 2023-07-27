@@ -44,7 +44,7 @@
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-form-field id="task-date">
-          <mat-label>Choose a date</mat-label>
+          <mat-label>Due Date</mat-label>
           <input
             matInput
             [matDatepicker]="picker"
@@ -82,3 +82,5 @@
     </mat-grid-list>
   </form>
 </mat-expansion-panel>
+
+{{ allTodos$ | async }}

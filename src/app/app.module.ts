@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { taskReducer } from './store/task.reducer';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,11 +15,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AddTaskComponent } from './add-task/add-task.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent, TaskListComponent, AddTaskComponent],
@@ -36,7 +38,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatDatepickerModule,
     MatNativeDateModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forRoot({ task: taskReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
