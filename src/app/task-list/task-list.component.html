@@ -1,19 +1,17 @@
 <app-add-task></app-add-task>
-<mat-accordion>
-  <mat-list *ngFor="let task of allTasks$ | async" class="task-list">
-    <mat-list-item>
-      <span matListItemTitle>{{ task.title }}</span>
-      <span matListItemLine>{{ task.description }}</span>
-      <span class="task-priority task-priority-{{ task.priority }}">{{
-        task.priority
-      }}</span>
-      <span matListItemMeta>
-        <span>{{ task.dueDate | date }}</span>
-        <button mat-icon-button (click)="removeTask(task.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </span>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-  </mat-list>
-</mat-accordion>
+<mat-list *ngFor="let task of allTasks$ | async" class="task-list">
+  <mat-list-item>
+    <span matListItemTitle>{{ task.title }}</span>
+    <span matListItemLine>{{ task.description }}</span>
+    <span class="task-priority task-priority-{{ task.priority }}">{{
+      task.priority
+    }}</span>
+    <span matListItemMeta>
+      <span>{{ task.dueDate | date }}</span>
+      <button mat-icon-button (click)="removeTask(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

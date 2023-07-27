@@ -4,14 +4,14 @@
 }
 
 .task-priority-low {
-    color: #ffffff;
-    background-color: #009d00;
+    color: #005609;
+    background-color: #4fff4f;
 }
 .task-priority-medium {
-    color: #202020;
+    color: #4e4e00;
     background-color: #fff200;
 }
 .task-priority-high {
-    color: #ffffff;
-    background-color: #ff0000;
+    color: #3e0000;
+    background-color: #ff6a6a;
 }
