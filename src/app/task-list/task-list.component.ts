@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { selectAllTasks } from '../store/task.selector';
-import { loadTasks } from '../store/task.actions';
+import { loadTasks, removeTask } from '../store/task.actions';
 
 @Component({
   selector: 'app-task-list',
@@ -16,5 +16,9 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadTasks());
+  }
+
+  removeTask(id: string) {
+    this.store.dispatch(removeTask({ id }));
   }
 }

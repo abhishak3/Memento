@@ -25,6 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent, TaskListComponent, AddTaskComponent],
@@ -47,6 +49,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatToolbarModule,
     MatTooltipModule,
     MatMenuModule,
+    MatCardModule,
+    MatListModule,
     StoreModule.forRoot({ task: taskReducer }),
     EffectsModule.forRoot([TaskEffects]),
   ],

@@ -8,7 +8,7 @@
     <mat-panel-title>
       <div [ngSwitch]="panelOpenState">
         <div *ngSwitchCase="false">
-          <mat-icon>add</mat-icon>
+          <mat-icon color="primary">add</mat-icon>
         </div>
         <div *ngSwitchCase="true">
           <button
@@ -26,7 +26,7 @@
         <div *ngSwitchDefault>Unexpected Error!</div>
       </div>
     </mat-panel-title>
-    <mat-panel-description> Add a new task. </mat-panel-description>
+    <mat-panel-description> Add a new task </mat-panel-description>
   </mat-expansion-panel-header>
   <form #myForm="ngForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">

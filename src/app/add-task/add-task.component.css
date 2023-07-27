@@ -1,7 +1,8 @@
 #add-task {
     margin: 10px 0px;
-    box-shadow: 2px 2px 4px #9e9e9e;
+    box-shadow: 2px 2px 5px #9e9e9e;
     border-radius: 10px;
+    background-color: #efefef;
 }
 
 #add-task-button {
