@@ -8,12 +8,19 @@
     <mat-panel-title>
       <div [ngSwitch]="panelOpenState">
         <div *ngSwitchCase="false">
-            <mat-icon>add</mat-icon>
+          <mat-icon>add</mat-icon>
         </div>
         <div *ngSwitchCase="true">
-          <button mat-fab extended color="primary" id="add-task-button">
+          <button
+            mat-fab
+            extended
+            color="primary"
+            id="add-task-button"
+            (click)="myForm.ngSubmit.emit()"
+            [disabled]="!taskForm.valid"
+          >
             <mat-icon>add</mat-icon>
-            Add 
+            Add
           </button>
         </div>
         <div *ngSwitchDefault>Unexpected Error!</div>
@@ -21,18 +28,18 @@
     </mat-panel-title>
     <mat-panel-description> Add a new task. </mat-panel-description>
   </mat-expansion-panel-header>
-  <form>
+  <form #myForm="ngForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">
       <mat-grid-tile colspan="3" rowspan="1">
         <mat-form-field id="task-title">
           <mat-label>Title</mat-label>
-          <input matInput required/>
+          <input matInput formControlName="title" />
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile colspan="3" rowspan="1">
         <mat-form-field id="task-description">
           <mat-label>Description</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="1">
@@ -42,6 +49,7 @@
             matInput
             [matDatepicker]="picker"
             [matDatepickerFilter]="currentFilter"
+            formControlName="dueDate"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -54,7 +62,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-form-field>
           <mat-label>Priority</mat-label>
-          <mat-select required>
+          <mat-select formControlName="priority">
             <mat-option value="low">Low</mat-option>
             <mat-option value="medium">Medium</mat-option>
             <mat-option value="high">High</mat-option>
@@ -64,7 +72,7 @@
       <mat-grid-tile colspan="1" rowspan="1">
         <mat-form-field>
           <mat-label>Status</mat-label>
-          <mat-select required>
+          <mat-select formControlName="status">
             <mat-option value="todo">Todo</mat-option>
             <mat-option value="in-progress">In-Progress</mat-option>
             <mat-option value="completed">Completed</mat-option>
