@@ -4,7 +4,6 @@ import { Store, select } from '@ngrx/store';
 import { addTask, removeTask } from '../store/task.actions';
 import { Task, Priority, Status } from '../task';
 import { selectAllTasks } from '../store/task.selector';
-import { TaskState } from '../store/task.reducer';
 import { AppState } from '../app.state';
 
 @Component({
@@ -24,9 +23,7 @@ export class AddTaskComponent {
     status: new FormControl('', [Validators.required]),
   });
 
-  constructor(private store: Store<AppState>) {
-    this.allTodos$.subscribe((data) => console.log(data));
-  }
+  constructor(private store: Store<AppState>) {}
 
   onSubmit() {
     if (this.taskForm.valid) {
