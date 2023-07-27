@@ -1,3 +1,6 @@
 <mat-accordion>
-    <app-add-task></app-add-task>
+  <app-add-task></app-add-task>
+  <div *ngFor="let task of allTasks$ | async">
+    {{ task.title }}
+  </div>
 </mat-accordion>

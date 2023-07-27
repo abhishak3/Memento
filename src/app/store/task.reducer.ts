@@ -1,6 +1,12 @@
-import { on, createReducer, State, Action } from '@ngrx/store';
+import { on, createReducer, Action } from '@ngrx/store';
 
-import { addTask, removeTask } from './task.actions';
+import {
+  addTask,
+  removeTask,
+  loadTasks,
+  loadTasksFailed,
+  loadTasksSuccess,
+} from './task.actions';
 import { Task } from '../task';
 
 export interface TaskState {
@@ -19,14 +25,33 @@ export const initialState: TaskState = {
 
 const reducer = createReducer(
   initialState,
+
   on(addTask, (state, action) => ({
     ...state,
     index: state.index + 1,
     tasks: [...state.tasks, action],
   })),
+
   on(removeTask, (state, { id }) => ({
     ...state,
     tasks: state.tasks.filter((item) => item.id !== id),
+  })),
+
+  on(loadTasks, (state) => ({
+    ...state,
+    status: 'loading' as const,
+  })),
+
+  on(loadTasksSuccess, (state, { tasks }) => ({
+    ...state,
+    tasks: tasks,
+    error: null,
+    status: 'success' as const,
+  })),
+
+  on(loadTasksFailed, (state, { error }) => ({
+    ...state,
+    error: error,
   }))
 );
 

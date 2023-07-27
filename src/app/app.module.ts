@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { taskReducer } from './store/task.reducer';
+import { TaskEffects } from './store/task.effects';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
@@ -40,6 +42,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatGridListModule,
     MatButtonModule,
     StoreModule.forRoot({ task: taskReducer }),
+    EffectsModule.forRoot([TaskEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
