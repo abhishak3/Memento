@@ -27,9 +27,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, AddTaskComponent],
+  declarations: [AppComponent, TaskListComponent, AddTaskComponent, EditTaskDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,6 +53,7 @@ import { MatListModule } from '@angular/material/list';
     MatMenuModule,
     MatCardModule,
     MatListModule,
+    MatDialogModule,
     StoreModule.forRoot({ task: taskReducer }),
     EffectsModule.forRoot([TaskEffects]),
   ],

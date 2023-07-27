@@ -1,0 +1,69 @@
+<h1 mat-dialog-title>Update:</h1>
+<div mat-dialog-content class="mat-typography">
+  <form #myForm="ngForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">
+      <mat-grid-tile colspan="3" rowspan="1">
+        <mat-form-field id="task-title">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="1">
+        <mat-form-field id="task-description">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field id="task-date">
+          <mat-label>Due Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [matDatepickerFilter]="currentFilter"
+            formControlName="dueDate"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority">
+            <mat-option value="low">Low</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="high">High</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1">
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="todo">Todo</mat-option>
+            <mat-option value="in-progress">In-Progress</mat-option>
+            <mat-option value="completed">Completed</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    color="primary"
+    [disabled]="!myForm.valid"
+    (click)="myForm.ngSubmit.emit()"
+  >
+    Update
+  </button>
+</div>
