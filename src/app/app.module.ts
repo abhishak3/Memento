@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 import { TaskToolbarComponent } from './task-toolbar/task-toolbar.component';
 import { exportReducer } from './store/export.reducer';
+import { TaskLogDialogComponent } from './task-log-dialog/task-log-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { exportReducer } from './store/export.reducer';
     AddTaskComponent,
     EditTaskDialogComponent,
     TaskToolbarComponent,
+    TaskLogDialogComponent,
   ],
   imports: [
     BrowserModule,

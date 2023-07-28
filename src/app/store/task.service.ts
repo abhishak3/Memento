@@ -34,7 +34,7 @@ export class TaskService {
     if (!old_task) {
       newlogs.push({
         timestamp: now,
-        action: `::TASK ${new_task.id} CREATED::`,
+        action: `::TASK CREATED:: ID (${new_task.id})`,
       });
       for (const key in new_task) {
         if (['id', 'historyLog', 'type'].includes(key)) continue;

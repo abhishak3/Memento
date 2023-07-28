@@ -6,6 +6,7 @@ import { loadTasks, removeTask, updateTask } from '../store/task.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { Status, Task } from '../task';
+import { TaskLogDialogComponent } from '../task-log-dialog/task-log-dialog.component';
 
 @Component({
   selector: 'app-task-list',
@@ -34,13 +35,26 @@ export class TaskListComponent implements OnInit {
   openDialog(
     enterAnimationDuration: string,
     exitAnimationDuration: string,
-    task: Task
+    task: Task,
+    type: string
   ): void {
-    this.dialog.open(EditTaskDialogComponent, {
-      width: '500px',
-      data: task,
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
+    switch (type) {
+      case 'edit':
+        this.dialog.open(EditTaskDialogComponent, {
+          width: '500px',
+          data: task,
+          enterAnimationDuration,
+          exitAnimationDuration,
+        });
+        break;
+      case 'log':
+        this.dialog.open(TaskLogDialogComponent, {
+          data: task.historyLog,
+        });
+        break;
+      default:
+        console.log('UNKNOWN DIALOUGE TYPE');
+        break;
+    }
   }
 }
