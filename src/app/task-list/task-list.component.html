@@ -1,7 +1,11 @@
 <mat-list *ngFor="let task of allTasks$ | async" class="task-list">
   <mat-list-item>
     <span matListItemAvatar>
-      <button mat-icon-button matTooltip="Sort" [matMenuTriggerFor]="menu">
+      <button
+        mat-icon-button
+        matTooltip="{{ task.status }}"
+        [matMenuTriggerFor]="menu"
+      >
         <mat-icon>{{
           task.status === "completed"
             ? "done"
@@ -35,7 +39,7 @@
   <mat-divider></mat-divider>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="updateStatus(task, 'todo')">
-      <mat-icon>play_circle_outline</mat-icon>
+      <mat-icon color="primary">play_circle_outline</mat-icon>
       Todo
     </button>
     <button mat-menu-item (click)="updateStatus(task, 'in-progress')">
