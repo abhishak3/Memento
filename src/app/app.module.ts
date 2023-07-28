@@ -30,9 +30,16 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
 import { TaskToolbarComponent } from './task-toolbar/task-toolbar.component';
+import { exportReducer } from './store/export.reducer';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, AddTaskComponent, EditTaskDialogComponent, TaskToolbarComponent],
+  declarations: [
+    AppComponent,
+    TaskListComponent,
+    AddTaskComponent,
+    EditTaskDialogComponent,
+    TaskToolbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +62,7 @@ import { TaskToolbarComponent } from './task-toolbar/task-toolbar.component';
     MatCardModule,
     MatListModule,
     MatDialogModule,
-    StoreModule.forRoot({ task: taskReducer }),
+    StoreModule.forRoot({ task: taskReducer, export: exportReducer }),
     EffectsModule.forRoot([TaskEffects]),
   ],
   providers: [],

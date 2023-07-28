@@ -13,14 +13,12 @@ import { Task } from '../task';
 
 export interface TaskState {
   tasks: Task[];
-  index: number;
   error: string | null;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const initialState: TaskState = {
   tasks: [],
-  index: 0,
   error: null,
   status: 'pending',
 };
@@ -30,7 +28,6 @@ const reducer = createReducer(
 
   on(addTask, (state, action) => ({
     ...state,
-    index: state.index + 1,
     tasks: [...state.tasks, action],
   })),
 

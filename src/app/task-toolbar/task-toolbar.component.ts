@@ -4,6 +4,7 @@ import { AppState } from '../app.state';
 import { Task } from '../task';
 import { selectAllTasks } from '../store/task.selector';
 import { sortTasks } from '../store/task.actions';
+import { exportTasks } from '../store/export.actions';
 
 @Component({
   selector: 'app-task-toolbar',
@@ -16,5 +17,8 @@ export class TaskToolbarComponent {
   constructor(private store: Store<AppState>) {}
   sortBy(by: keyof Task) {
     this.store.dispatch(sortTasks({ by: by }));
+  }
+  export() {
+    this.store.dispatch(exportTasks());
   }
 }

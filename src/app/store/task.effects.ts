@@ -13,6 +13,11 @@ import {
 } from './task.actions';
 import { catchError, from, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { selectAllTasks } from './task.selector';
+import {
+  exportTasks,
+  exportTasksFailed,
+  exportTasksSuccess,
+} from './export.actions';
 
 @Injectable()
 export class TaskEffects {
@@ -42,5 +47,17 @@ export class TaskEffects {
         switchMap(([action, tasks]) => this.taskService.saveTasks(tasks))
       ),
     { dispatch: false }
+  );
+
+  exportTasks$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(exportTasks),
+      switchMap(() =>
+        from(this.taskService.exportToCSV()).pipe(
+          map(() => exportTasksSuccess()),
+          catchError((error) => of(exportTasksFailed({ error: error })))
+        )
+      )
+    )
   );
 }
