@@ -1,14 +1,23 @@
+.mat-expansion-panel-header-title {
+  flex-grow: 0;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: center;
+}
+
 #add-task {
-    margin: 10px 0px;
-    box-shadow: 2px 2px 5px #9e9e9e;
-    border-radius: 10px;
-    background-color: #efefef;
+  margin: 10px 0px;
+  box-shadow: 2px 2px 5px #9e9e9e;
+  border-radius: 10px;
+  background-color: #efefef;
 }
 
 #add-task-button {
-    box-shadow: none;
+  box-shadow: none;
 }
 
-#task-title, #task-description {
-    width: 100%;
+#task-title,
+#task-description {
+  width: 100%;
 }

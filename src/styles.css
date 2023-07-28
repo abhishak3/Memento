@@ -5,5 +5,4 @@ html, body { height: 100%; }
 body {
     margin: auto;
     font-family: Roboto,"Helvetica Neue", sans-serif;
-    width: min(600px, 100vw);
 }

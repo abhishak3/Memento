@@ -26,7 +26,9 @@
         <div *ngSwitchDefault>Unexpected Error!</div>
       </div>
     </mat-panel-title>
-    <mat-panel-description> Add a new task </mat-panel-description>
+    <mat-panel-description id="add-task-text">
+      Add a new task
+    </mat-panel-description>
   </mat-expansion-panel-header>
   <form #myForm="ngForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <mat-grid-list cols="3" rowHeight="100px" gutterSize="5px">
