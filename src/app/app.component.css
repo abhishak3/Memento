@@ -1,0 +1,16 @@
+div.app-background {
+  height: 100vh;
+  background-color: black;
+}
+
+main.app-content {
+  width: min(600px, 100vw);
+  height: 80%;
+  min-width: 400px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: auto;
+}
