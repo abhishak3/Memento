@@ -6,6 +6,7 @@ import {
   loadTasks,
   loadTasksFailed,
   loadTasksSuccess,
+  updateTask,
 } from './task.actions';
 import { Task } from '../task';
 
@@ -35,6 +36,13 @@ const reducer = createReducer(
   on(removeTask, (state, { id }) => ({
     ...state,
     tasks: state.tasks.filter((item) => item.id !== id),
+  })),
+
+  on(updateTask, (state, { id, task }) => ({
+    ...state,
+    tasks: state.tasks.map((item) =>
+      item.id === id ? { ...task, id: id } : item
+    ),
   })),
 
   on(loadTasks, (state) => ({

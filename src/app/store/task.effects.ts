@@ -9,6 +9,7 @@ import {
   loadTasksFailed,
   loadTasksSuccess,
   removeTask,
+  updateTask,
 } from './task.actions';
 import { catchError, from, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { selectAllTasks } from './task.selector';
@@ -36,7 +37,7 @@ export class TaskEffects {
   saveTasks$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(addTask, removeTask),
+        ofType(addTask, removeTask, updateTask),
         withLatestFrom(this.store.select(selectAllTasks)),
         switchMap(([action, tasks]) => this.taskService.saveTasks(tasks))
       ),

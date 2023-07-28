@@ -7,6 +7,10 @@ export const removeTask = createAction(
   '[Task Page] Remove Task',
   props<{ id: string }>()
 );
+export const updateTask = createAction(
+  '[Task Page] Update Task',
+  props<{ id: string; task: Task }>()
+);
 export const loadTasks = createAction('[Task Page] Load Tasks');
 export const loadTasksSuccess = createAction(
   '[Task Page] Load Tasks Success',

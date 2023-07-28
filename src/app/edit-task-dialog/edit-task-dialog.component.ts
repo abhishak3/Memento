@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Priority, Status, Task } from '../task';
 import { AppState } from '../app.state';
-import { addTask } from '../store/task.actions';
+import { addTask, updateTask } from '../store/task.actions';
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -31,15 +31,15 @@ export class EditTaskDialogComponent {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
       const new_task: Task = {
-        id: Date.now().toString(),
+        id: '',
         title: formData.title as string,
         description: formData.description as string,
         dueDate: formData.dueDate as Date,
         priority: formData.priority as Priority,
         status: formData.status as Status,
       };
-      console.log('NEW TASK:', new_task);
-      this.store.dispatch(addTask(new_task));
+      console.log('UPDATE TASK:', new_task);
+      this.store.dispatch(updateTask({ id: this.data.id, task: new_task }));
       this.taskForm.reset();
     } else {
       console.log('Not Valid Submission!');
