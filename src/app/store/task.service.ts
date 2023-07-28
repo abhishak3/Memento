@@ -19,7 +19,9 @@ export class TaskService {
 
   async exportToCSV() {
     const data = localStorage.getItem('tasks');
-    const csvData = this.papa.unparse(JSON.parse(data ?? ''));
+    const csvData = this.papa.unparse(JSON.parse(data ?? ''), {
+      columns: ['id', 'title', 'description', 'dueDate', 'priority', 'status'],
+    });
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
