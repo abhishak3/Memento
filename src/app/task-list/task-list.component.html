@@ -24,19 +24,14 @@
     }}</span>
     <span matListItemMeta>
       <span>{{ task.dueDate | date }}</span>
-      <button
-        mat-icon-button
-        matTooltip="Edit"
-        (click)="openDialog('150ms', '150ms', task)"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="removeTask(task.id)" matTooltip="Delete">
-        <mat-icon>delete</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="actions">
+        <mat-icon>more_vert</mat-icon>
       </button>
     </span>
   </mat-list-item>
   <mat-divider></mat-divider>
+
+  <!--Menu Options-->
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="updateStatus(task, 'todo')">
       <mat-icon color="primary">play_circle_outline</mat-icon>
@@ -49,6 +44,24 @@
     <button mat-menu-item (click)="updateStatus(task, 'completed')">
       <mat-icon>done</mat-icon>
       Completed
+    </button>
+  </mat-menu>
+  <mat-menu #actions="matMenu">
+    <button
+      mat-menu-item
+      matTooltip="Edit"
+      (click)="openDialog('150ms', '150ms', task)"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+    <button mat-menu-item (click)="removeTask(task.id)" matTooltip="Delete">
+      <mat-icon color="warn">delete</mat-icon>
+      Delete
+    </button>
+    <button mat-menu-item (click)="updateStatus(task, 'completed')">
+      <mat-icon>info</mat-icon>
+      Logs
     </button>
   </mat-menu>
 </mat-list>
