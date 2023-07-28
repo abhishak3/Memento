@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { selectAllTasks } from '../store/task.selector';
-import { loadTasks, removeTask } from '../store/task.actions';
+import { loadTasks, removeTask, updateTask } from '../store/task.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
-import { Task } from '../task';
+import { Status, Task } from '../task';
 
 @Component({
   selector: 'app-task-list',
@@ -23,6 +23,12 @@ export class TaskListComponent implements OnInit {
 
   removeTask(id: string) {
     this.store.dispatch(removeTask({ id }));
+  }
+
+  updateStatus(task: Task, status: Status) {
+    this.store.dispatch(
+      updateTask({ id: task.id, task: { ...task, status: status } })
+    );
   }
 
   openDialog(

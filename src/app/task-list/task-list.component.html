@@ -33,18 +33,18 @@
     </span>
   </mat-list-item>
   <mat-divider></mat-divider>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="updateStatus(task, 'todo')">
+      <mat-icon>play_circle_outline</mat-icon>
+      Todo
+    </button>
+    <button mat-menu-item (click)="updateStatus(task, 'in-progress')">
+      <mat-icon>hourglass_top</mat-icon>
+      In Progress
+    </button>
+    <button mat-menu-item (click)="updateStatus(task, 'completed')">
+      <mat-icon>done</mat-icon>
+      Completed
+    </button>
+  </mat-menu>
 </mat-list>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>play_circle_outline</mat-icon>
-    Todo
-  </button>
-  <button mat-menu-item>
-    <mat-icon>hourglass_top</mat-icon>
-    In Progress
-  </button>
-  <button mat-menu-item>
-    <mat-icon>done</mat-icon>
-    Completed
-  </button>
-</mat-menu>
