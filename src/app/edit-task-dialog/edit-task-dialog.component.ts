@@ -37,6 +37,7 @@ export class EditTaskDialogComponent {
         dueDate: formData.dueDate as Date,
         priority: formData.priority as Priority,
         status: formData.status as Status,
+        historyLog: [],
       };
       console.log('UPDATE TASK:', new_task);
       this.store.dispatch(updateTask({ id: this.data.id, task: new_task }));

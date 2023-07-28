@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { addTask, removeTask } from '../store/task.actions';
+import { addTask } from '../store/task.actions';
 import { Task, Priority, Status } from '../task';
 import { selectAllTasks } from '../store/task.selector';
 import { AppState } from '../app.state';
@@ -35,6 +35,7 @@ export class AddTaskComponent {
         dueDate: new Date(formData.dueDate as string),
         priority: formData.priority as Priority,
         status: formData.status as Status,
+        historyLog: [],
       };
       console.log('NEW TASK:', new_task);
       this.store.dispatch(addTask(new_task));

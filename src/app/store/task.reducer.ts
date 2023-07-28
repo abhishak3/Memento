@@ -10,6 +10,7 @@ import {
   sortTasks,
 } from './task.actions';
 import { Task } from '../task';
+import { TaskService } from './task.service';
 
 export interface TaskState {
   tasks: Task[];
@@ -28,7 +29,10 @@ const reducer = createReducer(
 
   on(addTask, (state, action) => ({
     ...state,
-    tasks: [...state.tasks, action],
+    tasks: [
+      ...state.tasks,
+      { ...action, historyLog: TaskService.getLog(action) },
+    ],
   })),
 
   on(removeTask, (state, { id }) => ({
@@ -39,7 +43,13 @@ const reducer = createReducer(
   on(updateTask, (state, { id, task }) => ({
     ...state,
     tasks: state.tasks.map((item) =>
-      item.id === id ? { ...task, id: id } : item
+      item.id === id
+        ? {
+            ...task,
+            id: id,
+            historyLog: [...item.historyLog, ...TaskService.getLog(task, item)],
+          }
+        : item
     ),
   })),
 

@@ -1,3 +1,5 @@
+import { Log } from './log';
+
 export type Priority = 'low' | 'medium' | 'high';
 export type Status = 'todo' | 'in-progress' | 'completed';
 
@@ -8,4 +10,5 @@ export interface Task {
   dueDate: Date;
   priority: Priority;
   status: Status;
+  historyLog: Log[];
 }
