@@ -11,6 +11,10 @@ export const updateTask = createAction(
   '[Task Page] Update Task',
   props<{ id: string; task: Task }>()
 );
+export const sortTasks = createAction(
+  '[Task Page] Sort Tasks',
+  props<{ by: keyof Task }>()
+);
 export const loadTasks = createAction('[Task Page] Load Tasks');
 export const loadTasksSuccess = createAction(
   '[Task Page] Load Tasks Success',

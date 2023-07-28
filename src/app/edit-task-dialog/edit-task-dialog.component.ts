@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Priority, Status, Task } from '../task';
 import { AppState } from '../app.state';
-import { addTask, updateTask } from '../store/task.actions';
+import { updateTask } from '../store/task.actions';
 
 @Component({
   selector: 'app-edit-task-dialog',

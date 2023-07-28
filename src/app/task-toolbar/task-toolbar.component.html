@@ -1,0 +1,28 @@
+<div class="app-title">
+  <p>
+    <mat-toolbar color="primary">
+      <span id="app-title-text">{{ title }}</span>
+      <span class="example-spacer"></span>
+      <button
+        mat-icon-button
+        matTooltip="Export as CSV"
+        class="example-icon favorite-icon"
+      >
+        <mat-icon>get_app</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        matTooltip="Sort"
+        [matMenuTriggerFor]="menu"
+        class="example-icon favorite-icon"
+      >
+        <mat-icon>sort</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="sortBy('dueDate')">Due Date</button>
+  <button mat-menu-item (click)="sortBy('priority')">Priority</button>
+  <button mat-menu-item (click)="sortBy('status')">Status</button>
+</mat-menu>

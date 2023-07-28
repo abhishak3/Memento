@@ -29,9 +29,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.component';
+import { TaskToolbarComponent } from './task-toolbar/task-toolbar.component';
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, AddTaskComponent, EditTaskDialogComponent],
+  declarations: [AppComponent, TaskListComponent, AddTaskComponent, EditTaskDialogComponent, TaskToolbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
