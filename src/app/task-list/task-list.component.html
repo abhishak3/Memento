@@ -1,44 +1,42 @@
-<mat-list *ngFor="let task of allTasks$ | async" class="task-list">
-  <mat-list-item>
-    <span matListItemAvatar>
-      <button
-        mat-icon-button
-        matTooltip="{{ task.status }}"
-        [matMenuTriggerFor]="menu"
-      >
-        <mat-icon>{{
-          task.status === "completed"
-            ? "done"
-            : task.status === "in-progress"
-            ? "hourglass_top"
-            : "play_circle_outline"
-        }}</mat-icon>
-      </button>
-    </span>
-    <span matListItemTitle>{{ task.title }}</span>
-    <span matListItemLine matTooltip="{{ task.description }}">{{
-      task.description
-    }}</span>
-    <span class="task-priority task-priority-{{ task.priority }}">{{
-      task.priority
-    }}</span>
-    <span matListItemMeta>
-      <span>{{ task.dueDate | date }}</span>
-      <button
-        mat-icon-button
-        matTooltip="options"
-        [matMenuTriggerFor]="actions"
-      >
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </span>
-  </mat-list-item>
-  <mat-divider></mat-divider>
+<div *ngFor="let task of allTasks$ | async">
+  <mat-card class="task-card task-card-priority-{{ task.priority }}">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image">
+        <button
+          mat-icon-button
+          matTooltip="{{ task.status }}"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon>{{
+            task.status === "completed"
+              ? "done"
+              : task.status === "in-progress"
+              ? "hourglass_top"
+              : "play_circle_outline"
+          }}</mat-icon>
+        </button>
+      </div>
+      <mat-card-title-group>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-card-subtitle>{{ task.description }}</mat-card-subtitle>
+        <button
+          mat-icon-button
+          matTooltip="options"
+          [matMenuTriggerFor]="actions"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      {{ task.dueDate | date }}
+    </mat-card-actions>
+  </mat-card>
 
-  <!--Menu Options-->
+  <!-- Menu Items -->
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="updateStatus(task, 'todo')">
-      <mat-icon color="primary">play_circle_outline</mat-icon>
+      <mat-icon>play_circle_outline</mat-icon>
       Todo
     </button>
     <button mat-menu-item (click)="updateStatus(task, 'in-progress')">
@@ -64,4 +62,4 @@
       Logs
     </button>
   </mat-menu>
-</mat-list>
+</div>

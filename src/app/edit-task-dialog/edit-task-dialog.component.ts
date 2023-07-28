@@ -39,7 +39,6 @@ export class EditTaskDialogComponent {
         status: formData.status as Status,
         historyLog: [],
       };
-      console.log('UPDATE TASK:', new_task);
       this.store.dispatch(updateTask({ id: this.data.id, task: new_task }));
       this.taskForm.reset();
     } else {

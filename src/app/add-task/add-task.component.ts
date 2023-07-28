@@ -37,7 +37,6 @@ export class AddTaskComponent {
         status: formData.status as Status,
         historyLog: [],
       };
-      console.log('NEW TASK:', new_task);
       this.store.dispatch(addTask(new_task));
       this.taskForm.reset();
     } else {
