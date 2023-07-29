@@ -14,7 +14,8 @@ def create_task(db: Session, task: schemas.Task):
         due_date=task.due_date,
         priority=task.priority,
         status=task.status,
-        # logs=task.logs
+        logs=[{'timestamp': log.timestamp.isoformat(), 'action': log.action}
+              for log in task.logs]
     )
     db.add(db_item)
     db.commit()
@@ -29,7 +30,8 @@ def update_task(db: Session, updated_task: schemas.Task, task_id: int):
     task.due_date = updated_task.due_date
     task.priority = updated_task.priority
     task.status = updated_task.status
-    # task.logs = updated_task.logs
+    task.logs = [{'timestamp': log.timestamp.isoformat(), 'action': log.action}
+                 for log in updated_task.logs]
     db.commit()
     db.refresh(task)
     return task
