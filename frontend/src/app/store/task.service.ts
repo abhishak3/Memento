@@ -9,7 +9,7 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root',
 })
 export class TaskService {
-  baseUrl: string = 'http://127.0.0.1:8000';
+  baseUrl: string = 'https://memento-backend.vercel.app';
   constructor(private papa: Papa, private http: HttpClient) {}
   async getTasks() {
     return await lastValueFrom(this.http.get<Task[]>(`${this.baseUrl}/tasks/`));
