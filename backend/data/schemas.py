@@ -24,10 +24,10 @@ class Task(BaseModel):
     id: int
     title: str
     description: str
-    due_date: datetime
+    dueDate: datetime
     priority: Priority
     status: Status
-    logs: list[Log]
+    historyLog: list[Log]
 
     class Config:
         orm_mode = True
