@@ -12,6 +12,7 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
+    "*",
     "http://localhost:4200",
     "http://127.0.0.1:4200",
     "https://memento-iota.vercel.app/"
