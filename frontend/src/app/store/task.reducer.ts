@@ -29,10 +29,7 @@ const reducer = createReducer(
 
   on(addTask, (state, action) => ({
     ...state,
-    tasks: [
-      ...state.tasks,
-      { ...action, historyLog: TaskService.getLog(action) },
-    ],
+    tasks: [...state.tasks, action],
   })),
 
   on(removeTask, (state, { id }) => ({
@@ -42,15 +39,7 @@ const reducer = createReducer(
 
   on(updateTask, (state, { id, task }) => ({
     ...state,
-    tasks: state.tasks.map((item) =>
-      item.id === id
-        ? {
-            ...task,
-            id: id,
-            historyLog: [...item.historyLog, ...TaskService.getLog(task, item)],
-          }
-        : item
-    ),
+    tasks: state.tasks.map((item) => (item.id === id ? task : item)),
   })),
 
   on(sortTasks, (state, { by }) => {

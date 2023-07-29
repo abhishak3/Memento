@@ -2,15 +2,32 @@ import { Injectable } from '@angular/core';
 import { Task } from '../task';
 import { Papa } from 'ngx-papaparse';
 import { Log } from '../log';
+import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  constructor(private papa: Papa) {}
+  baseUrl: string = 'http://127.0.0.1:8000';
+  constructor(private papa: Papa, private http: HttpClient) {}
   async getTasks() {
-    let tasks = localStorage.getItem('tasks');
-    return (await JSON.parse(tasks ?? '')) || [];
+    return await lastValueFrom(this.http.get<Task[]>(`${this.baseUrl}/tasks/`));
+    /* for Local Storage */
+    // let tasks = localStorage.getItem('tasks');
+    // return (await JSON.parse(tasks ?? '')) || [];
+  }
+
+  async saveTask(task: Task) {
+    return await lastValueFrom(
+      this.http.post<Task>(`${this.baseUrl}/tasks/`, task)
+    );
+  }
+
+  async updateTask(task: Task) {
+    return await lastValueFrom(
+      this.http.post<Task>(`${this.baseUrl}/task/${task.id}`, task)
+    );
   }
 
   async saveTasks(tasks: Task[]) {

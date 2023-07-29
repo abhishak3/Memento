@@ -39,12 +39,30 @@ export class TaskEffects {
     )
   );
 
+  saveTask$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(addTask),
+        switchMap((action) => this.taskService.saveTask(action))
+      ),
+    { dispatch: false }
+  );
+
   saveTasks$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(addTask, removeTask, updateTask),
         withLatestFrom(this.store.select(selectAllTasks)),
         switchMap(([action, tasks]) => this.taskService.saveTasks(tasks))
+      ),
+    { dispatch: false }
+  );
+
+  updateTasks$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(updateTask),
+        switchMap(({ task }) => this.taskService.updateTask(task))
       ),
     { dispatch: false }
   );

@@ -5,6 +5,7 @@ import { addTask } from '../store/task.actions';
 import { Task, Priority, Status } from '../task';
 import { selectAllTasks } from '../store/task.selector';
 import { AppState } from '../app.state';
+import { TaskService } from '../store/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -23,7 +24,10 @@ export class AddTaskComponent {
     status: new FormControl('', [Validators.required]),
   });
 
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private taskService: TaskService
+  ) {}
 
   onSubmit() {
     if (this.taskForm.valid) {
@@ -37,6 +41,7 @@ export class AddTaskComponent {
         status: formData.status as Status,
         historyLog: [],
       };
+      new_task.historyLog = TaskService.getLog(new_task);
       this.store.dispatch(addTask(new_task));
       this.taskForm.reset();
     } else {

@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 import { Status, Task } from '../task';
 import { TaskLogDialogComponent } from '../task-log-dialog/task-log-dialog.component';
+import { TaskService } from '../store/task.service';
 
 @Component({
   selector: 'app-task-list',
@@ -27,9 +28,12 @@ export class TaskListComponent implements OnInit {
   }
 
   updateStatus(task: Task, status: Status) {
-    this.store.dispatch(
-      updateTask({ id: task.id, task: { ...task, status: status } })
-    );
+    const new_task = { ...task, status: status };
+    new_task.historyLog = [
+      ...new_task.historyLog,
+      ...TaskService.getLog(new_task, task),
+    ];
+    this.store.dispatch(updateTask({ id: task.id, task: new_task }));
   }
 
   openDialog(

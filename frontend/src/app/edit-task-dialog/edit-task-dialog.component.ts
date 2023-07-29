@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Priority, Status, Task } from '../task';
 import { AppState } from '../app.state';
 import { updateTask } from '../store/task.actions';
+import { TaskService } from '../store/task.service';
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -24,6 +25,7 @@ export class EditTaskDialogComponent {
   constructor(
     private store: Store<AppState>,
     public dialogRef: MatDialogRef<EditTaskDialogComponent>,
+    private taskService: TaskService,
     @Inject(MAT_DIALOG_DATA) public data: Task
   ) {}
 
@@ -31,14 +33,18 @@ export class EditTaskDialogComponent {
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
       const new_task: Task = {
-        id: '',
+        id: this.data.id,
         title: formData.title as string,
         description: formData.description as string,
         dueDate: formData.dueDate as Date,
         priority: formData.priority as Priority,
         status: formData.status as Status,
-        historyLog: [],
+        historyLog: this.data.historyLog,
       };
+      new_task.historyLog = [
+        ...new_task.historyLog,
+        ...TaskService.getLog(new_task, this.data),
+      ];
       this.store.dispatch(updateTask({ id: this.data.id, task: new_task }));
       this.taskForm.reset();
     } else {
