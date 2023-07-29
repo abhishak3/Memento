@@ -1,6 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
 from enum import Enum
+from typing import List
 
 
 class Priority(Enum):
@@ -15,6 +16,11 @@ class Status(Enum):
     COMPLETED = 'completed'
 
 
+class Log(BaseModel):
+    timestamp: datetime
+    action: str
+
+
 class Task(BaseModel):
     id: int
     title: str
@@ -22,6 +28,7 @@ class Task(BaseModel):
     due_date: datetime
     priority: Priority
     status: Status
+    logs: List[Log]
 
     class Config:
         orm_mode = True
