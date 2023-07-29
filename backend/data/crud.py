@@ -9,6 +9,7 @@ def get_tasks(db: Session):
 
 def create_task(db: Session, task: schemas.Task):
     db_item = models.Task(
+        id=task.id,
         title=task.title,
         description=task.description,
         dueDate=task.dueDate,

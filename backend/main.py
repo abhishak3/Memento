@@ -53,6 +53,6 @@ def create_task(task: schemas.Task, db: Session = Depends(get_db)):
 
 
 @app.post('/task/{task_id}', response_model=schemas.Task)
-def update_task(task_id: int, updated_task: schemas.Task, db: Session = Depends(get_db)):
+def update_task(task_id: str, updated_task: schemas.Task, db: Session = Depends(get_db)):
     updated_db_task = crud.update_task(db, updated_task, task_id)
     return updated_db_task
