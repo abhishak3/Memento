@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Logs</h2>
 <mat-dialog-content>
   <div *ngFor="let log of this.data">
-    <div>{{ log.action }}</div>
+    <div>{{ (log.timestamp | date : "MMM d, y, h:mm:ss a") + log.action }}</div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
