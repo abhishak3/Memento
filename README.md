@@ -6,19 +6,18 @@ This is a simple Task Management Application implemented using [Technology Stack
 
 ## Features
 
-- **Create Task**: Users can add new tasks with a title, description, due date, priority, and status.
-
-- **View Task**: Users can view a list of all tasks along with their details.
-
-- **Update Task**: Users can edit and update existing tasks to modify their title, description, due date, priority, or status.
-
-- **Delete Task**: Users can delete tasks that are no longer needed.
+- [x] A user-friendly interface where users can add new tasks with a title, description, due date, and priority level (low, medium, high).
+- [x] Users are able to update the status of tasks (to-do, in-progress, completed) and also edit or delete tasks.
+- [x] The application displays tasks in a list view, with the ability to sort tasks by due date, priority, or status.
+- [x] The application is responsive and work well on both desktop and mobile devices.
+- [x] Uses can export the tasks to a CSV file.
+- [x] History Log showing all the changes made to each task (like when it was created, status changes, edits, etc.)
 
 ## Setup and Installation
 
 1. Clone the repository.
 
-2. Run
+2. Run this shell command. If you're on windows platform, execute it on GitBash.
 
 ```bash
 ./run.sh
@@ -26,17 +25,7 @@ This is a simple Task Management Application implemented using [Technology Stack
 
 > Note: If it is not executable, please do it so by performing `chmod +x run.sh`.
 
-## Usage
-
-- Access the application through [URL - http://localhost:4200] in your web browser.
-
-- Create a new task by clicking on the "Add Task" button and filling in the required details.
-
-- View the list of existing tasks on the homepage.
-
-- Click on task status present on leftmost side of a task to change it.
-
-- To delete a task, select it and click on the "Delete" button present in vertical dropdown.
+3. Application is now available at `http://localhost:4200`.
 
 ## Contact
 

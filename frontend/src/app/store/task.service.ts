@@ -44,8 +44,11 @@ export class TaskService {
   // }
 
   async exportToCSV() {
-    const data = localStorage.getItem('tasks');
-    const csvData = this.papa.unparse(JSON.parse(data ?? ''), {
+    // const data = localStorage.getItem('tasks');
+    const data = await lastValueFrom(
+      this.http.get<any>(`${this.baseUrl}/tasks/`)
+    );
+    const csvData = this.papa.unparse(data, {
       columns: ['id', 'title', 'description', 'dueDate', 'priority', 'status'],
     });
     const blob = new Blob([csvData], { type: 'text/csv' });
