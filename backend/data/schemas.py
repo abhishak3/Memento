@@ -21,7 +21,7 @@ class Log(BaseModel):
 
 
 class Task(BaseModel):
-    id: int
+    id: str
     title: str
     description: str
     dueDate: datetime
