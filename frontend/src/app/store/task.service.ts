@@ -18,7 +18,7 @@ export class TaskService {
     // return (await JSON.parse(tasks ?? '')) || [];
   }
 
-  async saveTask(task: Task) {
+  async createTask(task: Task) {
     return await lastValueFrom(
       this.http.post<Task>(`${this.baseUrl}/tasks/`, task)
     );
@@ -30,9 +30,16 @@ export class TaskService {
     );
   }
 
-  async saveTasks(tasks: Task[]) {
-    return localStorage.setItem('tasks', JSON.stringify(tasks));
+  async removeTask(task_id: string) {
+    return await lastValueFrom(
+      this.http.delete<null>(`${this.baseUrl}/task/${task_id}`)
+    );
   }
+
+  /* for Local Storage */
+  // async saveTasks(tasks: Task[]) {
+  //   return localStorage.setItem('tasks', JSON.stringify(tasks));
+  // }
 
   async exportToCSV() {
     const data = localStorage.getItem('tasks');

@@ -39,26 +39,16 @@ export class TaskEffects {
     )
   );
 
-  saveTask$ = createEffect(
+  createTask$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(addTask),
-        switchMap((action) => this.taskService.saveTask(action))
+        switchMap((action) => this.taskService.createTask(action))
       ),
     { dispatch: false }
   );
 
-  saveTasks$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(addTask, removeTask, updateTask),
-        withLatestFrom(this.store.select(selectAllTasks)),
-        switchMap(([action, tasks]) => this.taskService.saveTasks(tasks))
-      ),
-    { dispatch: false }
-  );
-
-  updateTasks$ = createEffect(
+  updateTask$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(updateTask),
@@ -66,6 +56,26 @@ export class TaskEffects {
       ),
     { dispatch: false }
   );
+
+  readTask$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(removeTask),
+        switchMap(({ id }) => this.taskService.removeTask(id))
+      ),
+    { dispatch: false }
+  );
+
+  /* For Local Storage */
+  // saveTasks$ = createEffect(
+  //   () =>
+  //     this.actions$.pipe(
+  //       ofType(addTask, removeTask, updateTask),
+  //       withLatestFrom(this.store.select(selectAllTasks)),
+  //       switchMap(([action, tasks]) => this.taskService.saveTasks(tasks))
+  //     ),
+  //   { dispatch: false }
+  // );
 
   exportTasks$ = createEffect(() =>
     this.actions$.pipe(
