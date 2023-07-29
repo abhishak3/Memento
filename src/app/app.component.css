@@ -3,7 +3,8 @@ div.app-background {
   background-image: url("https://wallpapersmug.com/download/1920x1080/4d7d03/light-colors-geometric-pattern-abstract.jpg");
   /* background-image: url("https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"); */
   background-repeat: no-repeat;
-  background-size: 200vb;
+  background-size: cover;
+  min-width: 320px;
 }
 
 div#app-date {
@@ -13,10 +14,10 @@ div#app-date {
 }
 
 main.app-content {
-  width: min(600px, 100vw);
-  min-height: 40%;
-  max-height: 80%;
-  min-width: 400px;
+  max-height: 85%;
+  min-width: 300px;
+  max-width: 600px;
+  width: calc(min(580px, 100vw)-20px);
   padding: 10px;
   background-color: rgb(255, 255, 255, 0);
   border-radius: 10px;
