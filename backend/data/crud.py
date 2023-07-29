@@ -36,3 +36,9 @@ def update_task(db: Session, updated_task: schemas.Task, task_id: int):
     db.commit()
     db.refresh(task)
     return task
+
+
+def delete_task(db: Session, task_id):
+    task: models.Task = db.query(models.Task).get(task_id)
+    db.delete(task)
+    db.commit()

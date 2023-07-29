@@ -56,3 +56,8 @@ def create_task(task: schemas.Task, db: Session = Depends(get_db)):
 def update_task(task_id: str, updated_task: schemas.Task, db: Session = Depends(get_db)):
     updated_db_task = crud.update_task(db, updated_task, task_id)
     return updated_db_task
+
+
+@app.delete('/task/{task_id}')
+def delete_task(task_id: str, db: Session = Depends(get_db)):
+    crud.delete_task(db, task_id)
