@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.state';
+import { selectStatus } from './store/task.selector';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +11,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Memento';
   date = new Date();
+  status$ = this.store.select(selectStatus);
+  constructor(private store: Store<AppState>) {}
 }
