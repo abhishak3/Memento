@@ -10,6 +10,8 @@ class Task(Base):
     title = Column(String, index=True, nullable=False)
     description = Column(String, nullable=True)
     dueDate = Column(DateTime, nullable=False)
-    priority = Column(Enum("low", "medium", "high"), nullable=False)
-    status = Column(Enum("todo", "in-progress", "completed"), nullable=False)
+    priority = Column(Enum("low", "medium", "high",
+                      name='priority_types'), nullable=False)
+    status = Column(Enum("todo", "in-progress", "completed",
+                    name='status_types'), nullable=False)
     historyLog = Column(JSON, default=[])
