@@ -8,3 +8,7 @@ export const selectAllTasks = createSelector(
   selectTasks,
   (state: TaskState) => state.tasks
 );
+export const selectStatus = createSelector(
+  selectTasks,
+  (state: TaskState) => state.status
+);

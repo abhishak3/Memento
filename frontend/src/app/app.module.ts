@@ -33,6 +33,7 @@ import { EditTaskDialogComponent } from './edit-task-dialog/edit-task-dialog.com
 import { TaskToolbarComponent } from './task-toolbar/task-toolbar.component';
 import { exportReducer } from './store/export.reducer';
 import { TaskLogDialogComponent } from './task-log-dialog/task-log-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { TaskLogDialogComponent } from './task-log-dialog/task-log-dialog.compon
     MatCardModule,
     MatListModule,
     MatDialogModule,
+    MatProgressBarModule,
     StoreModule.forRoot({ task: taskReducer, export: exportReducer }),
     EffectsModule.forRoot([TaskEffects]),
   ],
