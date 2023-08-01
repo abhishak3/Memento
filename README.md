@@ -1,8 +1,9 @@
 # Memento
 
-Memento Mori
+[To Website](https://memento-iota.vercel.app)
 
 This is a simple Task Management Application implemented using [Technology Stack - List your technology stack here]. The application allows users to create, view, update, and delete tasks.
+> NOTE: Please wait for around (1 minute) for loading. The initial startup of the application takes time as I'm on the free tier. Till then have fun with loading animation :)
 
 ## Features
 
