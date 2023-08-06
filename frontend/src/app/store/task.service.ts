@@ -1,20 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../task';
+import { Priority, Status, Task } from '../task';
 import { Papa } from 'ngx-papaparse';
 import { Log } from '../log';
 import { HttpClient } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
+
+export interface TaskResponse {
+  id: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  priority: string;
+  status: string;
+  historyLog: Log[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  // baseUrl: string = 'http://localhost:8000';
   baseUrl: string = 'https://memento-backend-abhishak3.vercel.app';
-  // baseUrl: string = 'https://memento-e3tn.onrender.com';
   constructor(private papa: Papa, private http: HttpClient) {}
   async getTasks() {
-    return await lastValueFrom(this.http.get<Task[]>(`${this.baseUrl}/tasks/`));
+    var tasks: Task[] = await lastValueFrom(
+      this.http.get<TaskResponse[]>(`${this.baseUrl}/tasks/`).pipe(
+        map((taskResponses) =>
+          taskResponses.map((taskResponse) => ({
+            ...taskResponse,
+            dueDate: new Date(taskResponse.dueDate + 'Z'),
+            priority: taskResponse.priority as Priority,
+            status: taskResponse.status as Status,
+          }))
+        )
+      )
+    );
+    return tasks;
     /* for Local Storage */
     // let tasks = localStorage.getItem('tasks');
     // return (await JSON.parse(tasks ?? '')) || [];
